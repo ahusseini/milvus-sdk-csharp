@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!-- We target net462 directly since the net462 version of Grpc.Net.Client automatically uses WinHttpHandler -->
-    <TargetFrameworks>net6.0;netstandard2.0;net462</TargetFrameworks>
-    <TargetFrameworks Condition="'$(DeveloperBuild)' == 'True'">net6.0</TargetFrameworks>
+    <TargetFramework>net8.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AnalysisMode>All</AnalysisMode>
 
@@ -26,7 +24,7 @@
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
-  
+
   <ItemGroup>
     <Protobuf Include="Protos\proto\common.proto" GrpcServices="Client" Access="internal" />
     <Protobuf Include="Protos\proto\schema.proto" GrpcServices="Client" ProtoRoot="Protos\proto" Access="internal" />
@@ -43,11 +41,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
-    <PackageReference Include="System.Text.Json" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'net462'">
-    <PackageReference Include="Microsoft.Bcl.HashCode" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>
